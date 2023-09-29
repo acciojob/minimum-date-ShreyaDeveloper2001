@@ -1,5 +1,25 @@
 function minDate(dates) {
   //write you code here
+	if (!dates || dates.length === 0) {
+    return null; // Return null for empty input or invalid dates
+  }
+
+  // Initialize with the first date
+  let min = new Date(dates[0]);
+
+  for (let i = 1; i < dates.length; i++) {
+    const currentDate = new Date(dates[i]);
+
+    // Compare current date with the minimum date
+    if (currentDate < min) {
+      min = currentDate;
+    }
+  }
+	// Format the minimum date as "YYYY/MM/DD" and return it as a string
+  const year = min.getFullYear();
+  const month = String(min.getMonth() + 1).padStart(2, '0');
+  const day = String(min.getDate()).padStart(2, '0');
+  return `${year}/${month}/${day}`;
 }
 
 // Do not change the code
